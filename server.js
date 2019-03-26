@@ -1,49 +1,22 @@
 'use strict';
 
 const express = require('express');
-const moment = require('moment');
+const app = express();
 const faker = require('faker');
 
+const PORT = process.env.PORT || 3000;
 
-const app = express();
+const routes = require('./routes.js');
+const logger = require('./handlers/logger.js');
+const recordTime = require('./handlers/record-time.js');
+const squareAndAttach = require('./handlers/square-number.js');
+const errorHandler = require('./handlers/500.js');
+const notFoundHandler = require('./handlers/404.js');
 
-const PORT = process.env.PORT || 8080;
-
-const recordTime = (req, res, next) => {
-  req.requestTime = moment().format('MM/DD/YYYY [at] h:mm:ss a');
-  next();
-};
-
-const logger = (req, res, next) => {
-  console.log(`
-method: ${req.method}
-path: ${req.path}
-time: ${req.requestTime}`);
-  next();
-};
-
-const randNumLog = (req, res, next) => {
-  console.log(faker.random.number());
-  next();
-};
-
-const raiseError = (req, res, next) => {
-  next('made an error on purpose');
-};
-
-const squareAndAttach = (number) => {
-  return (req, res, next) => {
-    req.number = number * number;
-    next();
-  };
-};
-
-const notFoundHandler = (req, res, next) => {
-  res.status(404).send('Not found');
-};
-
+app.use(express.json());
 app.use(recordTime);
 app.use(logger);
+app.use(routes);
 
 app.get('/a', (req, res) => {
   res.status(200).send('Route A');
@@ -53,20 +26,8 @@ app.get('/b', squareAndAttach(faker.random.number()), (req, res) => {
   res.status(200).send(req.number.toString());
 });
 
-app.get('/c', randNumLog, (req, res) => {
-  res.status(200).send('Route C');
-});
-
-app.get('/d', raiseError, (req, res) => {
-  res.status(200).send('Route D');
-});
-
 app.use('*', notFoundHandler);
 
-// error handling middleware
-app.use((err, req, res, next) => {
-  res.status(500).send('There was a server error');
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
