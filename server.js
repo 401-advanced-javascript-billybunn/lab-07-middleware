@@ -50,7 +50,7 @@ app.get('/a', (req, res) => {
 });
 
 app.get('/b', squareAndAttach(faker.random.number()), (req, res) => {
-  res.status(200).send('Route B');
+  res.status(200).send(req.number.toString());
 });
 
 app.get('/c', randNumLog, (req, res) => {
