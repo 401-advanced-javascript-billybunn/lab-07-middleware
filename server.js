@@ -2,6 +2,8 @@
 
 const express = require('express');
 const moment = require('moment');
+const faker = require('faker');
+
 
 const app = express();
 
@@ -9,11 +11,20 @@ const PORT = process.env.PORT || 8080;
 
 const recordTime = (req, res, next) => {
   req.requestTime = moment().format('MM/DD/YYYY [at] h:mm:ss a');
-  console.log(req.requestTime);
   next();
 };
-const logger = (req,res,next) => {
-  console.log(req.requestTime);
+
+const logger = (req, res, next) => {
+  console.log(`
+method: ${req.method}
+path: ${req.path}
+time: ${req.requestTime}`);
+  next();
+};
+
+const randNumLog = (req, res, next) => {
+  console.log(faker.random.number());
+  next();
 };
 
 const notFoundHandler = (req, res, next) => {
@@ -31,7 +42,7 @@ app.get('/b', (req, res) => {
   res.status(200).send('Route B');
 });
 
-app.get('/c', (req, res) => {
+app.get('/c', randNumLog, (req, res) => {
   res.status(200).send('Route C');
 });
 
