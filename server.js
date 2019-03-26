@@ -27,6 +27,17 @@ const randNumLog = (req, res, next) => {
   next();
 };
 
+const raiseError = (req, res, next) => {
+  next('made an error on purpose');
+};
+
+const squareAndAttach = (number) => {
+  return (req, res, next) => {
+    req.number = number * number;
+    next();
+  };
+};
+
 const notFoundHandler = (req, res, next) => {
   res.status(404).send('Not found');
 };
@@ -38,7 +49,7 @@ app.get('/a', (req, res) => {
   res.status(200).send('Route A');
 });
 
-app.get('/b', (req, res) => {
+app.get('/b', squareAndAttach(faker.random.number()), (req, res) => {
   res.status(200).send('Route B');
 });
 
@@ -46,7 +57,7 @@ app.get('/c', randNumLog, (req, res) => {
   res.status(200).send('Route C');
 });
 
-app.get('/d', (req, res) => {
+app.get('/d', raiseError, (req, res) => {
   res.status(200).send('Route D');
 });
 
