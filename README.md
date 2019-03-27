@@ -4,9 +4,9 @@
 <!-- LINKS -->
 <!-- Replace the link for each in brackets below -->
 <!-- PR (working into submission) -->
-[1]: http://xyz.com
+[1]: https://github.com/401-advanced-javascript-billybunn/lab-07-middleware/pulls
 <!-- travis build -->
-[2]: https://www.travis-ci.com/YOUR_ORG_NAME/REPO_NAME
+[2]: https://travis-ci.com/401-advanced-javascript-billybunn/lab-07-middleware/builds/105934846
 <!-- back-end -->
 [3]: http://xyz.com
 <!-- front-end -->
@@ -16,9 +16,14 @@
 <!-- jsdoc-->
 [6]: heroku-link/docs 
 
-## Project Name
+## Lab: Express - _Middleware, Routing, Modularization Practice_
 
-### Author: YOUR NAME
+### Author: Billy Bunn
+
+1. [Middleware, Routing, Modularization Practice](https://github.com/401-advanced-javascript-billybunn/lab-07-middleware)
+2. [Testing Practice](https://github.com/401-advanced-javascript-billybunn/lab-07-testing)
+3. [API Server]()
+
 
 ### Links and Resources
 * [PR][1]
@@ -26,7 +31,7 @@
 <!-- (when applicable) -->
 * [back-end][3]
 <!-- (when applicable) -->
-* [front-end][4]
+<!-- * [front-end][4] -->
 
 #### Documentation
 <!-- API assignments only -->
