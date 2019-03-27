@@ -16,14 +16,20 @@
 <!-- jsdoc-->
 [6]: heroku-link/docs 
 
-## Lab: Express - _Middleware, Routing, Modularization Practice_
-
-### Author: Billy Bunn
-
+## Three Repos for this lab
 1. [Middleware, Routing, Modularization Practice](https://github.com/401-advanced-javascript-billybunn/lab-07-middleware)
 2. [Testing Practice](https://github.com/401-advanced-javascript-billybunn/lab-07-testing)
 3. [API Server]()
 
+## Grading notes
+* First repo should be complete
+* Had trouble with the other two. Especially testing.
+
+---
+
+## Lab: Express - _Middleware, Routing, Modularization Practice_
+
+### Author: Billy Bunn
 
 ### Links and Resources
 * [PR][1]
