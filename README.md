@@ -34,10 +34,7 @@
 ### Links and Resources
 * [PR][1]
 * [travis][2]
-<!-- (when applicable) -->
-* [back-end][3]
-<!-- (when applicable) -->
-<!-- * [front-end][4] -->
+
 
 #### Documentation
 <!-- API assignments only -->
